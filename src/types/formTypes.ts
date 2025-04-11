@@ -15,3 +15,13 @@ export type AccountInfo = {
   password: string;
   confirmPassword: string;
 };
+
+export type FormData = {
+  personal?: PersonalInfo;
+  address?: AddressInfo;
+  account?: AccountInfo;
+};
+
+export type FormStep = 1 | 2 | 3 | 4;
+
+export type FormStatus = "idle" | "submitting" | "success" | "error";
