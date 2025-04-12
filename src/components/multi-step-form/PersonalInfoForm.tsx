@@ -38,7 +38,7 @@ export default function PersonalInfoForm() {
         control={control}
         name="email"
         label="Email"
-        placeholder="john@example.com"
+        placeholder="yourname@example.com"
         type="email"
         error={errors.email}
       />

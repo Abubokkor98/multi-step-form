@@ -2,6 +2,10 @@
 
 A responsive multi-step form built with React & Next.js (App Router) featuring client-side validation and state management.
 
+## Demo Video
+
+[Watch Demo Video on Loom](https://www.loom.com/share/9ee5371a0d6c4a3cb9a66c0605b03233?sid=b75b6054-a1d9-4754-8a89-e214d71456c0)
+
 ## Features
 
 - Three-step form process with validation
