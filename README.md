@@ -35,7 +35,7 @@ Follow these steps to run the project locally:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/multi-step-form.git
+git clone https://github.com/Abubokkor98/multi-step-form.git
 cd multi-step-form
 ```
 
