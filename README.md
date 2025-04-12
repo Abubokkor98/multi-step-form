@@ -1,36 +1,121 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Multi-Step Form with Validation
 
-## Getting Started
+A responsive multi-step form built with React & Next.js (App Router) featuring client-side validation and state management.
 
-First, run the development server:
+## Features
+
+- Three-step form process with validation
+- Form progress indicator
+- Input validation with real-time error messages
+- Comprehensive form state management
+- Simulated API submission
+- Responsive design with TailwindCSS
+
+## Tech Stack
+
+- **Next.js** (App Router)
+- **React Hook Form** for form handling
+- **Zod** for validation schemas
+- **TailwindCSS** for styling
+- **React Query** for API simulation
+
+## Prerequisites
+
+- Node.js 18.x or higher
+- npm or yarn
+
+## Installation and Setup Guide
+
+Follow these steps to run the project locally:
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/yourusername/multi-step-form.git
+cd multi-step-form
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+# or
+yarn
+```
+
+### 3. Run the Development Server
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The application will be available at [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/                    # Next.js App Router files
+│   ├── api/                # API routes
+│   │   └── submit/         # Form submission endpoint
+│   ├── page.tsx            # Main page component
+│   └── layout.tsx          # Root layout with providers
+├── components/             # React components
+│   ├── multi-step-form/    # Form step components
+│   └── ui/                 # Reusable UI components
+├── context/                # React context providers
+├── providers/              # Service providers
+├── schemas/                # Validation schemas
+└── types/                  # TypeScript type definitions
+```
 
-## Learn More
+## Form Steps
 
-To learn more about Next.js, take a look at the following resources:
+1. **Personal Information**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   - Full Name (required)
+   - Email (required, valid format)
+   - Phone Number (required, min 10 digits)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. **Address Details**
 
-## Deploy on Vercel
+   - Street Address (required)
+   - City (required)
+   - ZIP Code (required, numbers only, min 5 digits)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. **Account Setup**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   - Username (required, min 4 characters)
+   - Password (required, min 6 characters)
+   - Confirm Password (must match password)
+
+4. **Summary & Submission**
+   - Review all entered information
+   - Submit data to API
+
+## Environment Variables
+
+The project includes the necessary environment variables in the repository. No additional configuration is required.
+
+## Testing
+
+You can test the form by:
+
+1. Filling out each step with valid/invalid data to check validation
+2. Navigating between steps using the Next/Previous buttons
+3. Reviewing the summary page
+4. Submitting the form and checking the console for logged data
+
+## Future Plan
+
+- Dark mode support
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
