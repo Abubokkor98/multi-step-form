@@ -8,6 +8,9 @@ type Props = {
   label: string;
   type?: string;
   placeholder?: string;
+  error?: {
+    message?: string;
+  };
 };
 
 export default function FormInput({
@@ -16,6 +19,7 @@ export default function FormInput({
   label,
   type = "text",
   placeholder = "",
+  error,
 }: Props) {
   return (
     <div className="space-y-1">
@@ -23,22 +27,22 @@ export default function FormInput({
       <Controller
         name={name}
         control={control}
-        render={({ field, fieldState }) => (
-          <>
+        render={({ field }) => (
+          <div className="relative">
             <input
               {...field}
               type={type}
               placeholder={placeholder}
-              className={`w-full p-2 border rounded ${
-                fieldState.error ? "border-red-500" : "border-gray-300"
+              className={`w-full p-2 border rounded-md focus:ring-2 focus:outline-none transition-all ${
+                error
+                  ? "border-red-500 focus:ring-red-200"
+                  : "border-gray-300 focus:border-blue-500 focus:ring-blue-200"
               }`}
             />
-            {fieldState.error && (
-              <p className="text-red-500 text-sm mt-1">
-                {fieldState.error.message}
-              </p>
+            {error?.message && (
+              <p className="text-red-500 text-sm mt-1">{error.message}</p>
             )}
-          </>
+          </div>
         )}
       />
     </div>

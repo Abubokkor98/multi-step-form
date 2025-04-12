@@ -9,8 +9,13 @@ import FormNavigation from "./FormNavigation";
 
 export default function AccountSetupForm() {
   const { formData, updateFormData, goToNextStep } = useFormContext();
-  const { control, handleSubmit, formState } = useForm({
+  const {
+    control,
+    handleSubmit,
+    formState: { isValid, errors },
+  } = useForm({
     resolver: zodResolver(accountInfoSchema),
+    mode: "onChange",
     defaultValues: formData.account || {},
   });
 
@@ -25,21 +30,24 @@ export default function AccountSetupForm() {
         control={control}
         name="username"
         label="Username"
-        placeholder="john_doe123"
+        placeholder="abubokkor123"
+        error={errors.username}
       />
       <FormInput
         control={control}
         name="password"
         label="Password"
         type="password"
+        error={errors.password}
       />
       <FormInput
         control={control}
         name="confirmPassword"
         label="Confirm Password"
         type="password"
+        error={errors.confirmPassword}
       />
-      <FormNavigation isValid={formState.isValid} />
+      <FormNavigation isValid={isValid} />
     </form>
   );
 }

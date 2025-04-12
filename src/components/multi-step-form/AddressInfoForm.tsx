@@ -10,8 +10,13 @@ import FormNavigation from "./FormNavigation";
 export default function AddressInfoForm() {
   const { formData, updateFormData, goToNextStep, goToPrevStep } =
     useFormContext();
-  const { control, handleSubmit, formState } = useForm({
+  const {
+    control,
+    handleSubmit,
+    formState: { isValid, errors },
+  } = useForm({
     resolver: zodResolver(addressInfoSchema),
+    mode: "onChange",
     defaultValues: formData.address || {},
   });
 
@@ -27,20 +32,23 @@ export default function AddressInfoForm() {
         name="street"
         label="Street Address"
         placeholder="123 Main St"
+        error={errors.street}
       />
       <FormInput
         control={control}
         name="city"
         label="City"
-        placeholder="New York"
+        placeholder="Dhaka"
+        error={errors.city}
       />
       <FormInput
         control={control}
         name="zipCode"
         label="ZIP Code"
-        placeholder="10001"
+        placeholder="12345"
+        error={errors.zipCode}
       />
-      <FormNavigation isValid={formState.isValid} />
+      <FormNavigation isValid={isValid} />
     </form>
   );
 }

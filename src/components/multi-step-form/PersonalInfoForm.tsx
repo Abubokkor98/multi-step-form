@@ -9,8 +9,14 @@ import FormNavigation from "./FormNavigation";
 
 export default function PersonalInfoForm() {
   const { formData, updateFormData, goToNextStep } = useFormContext();
-  const { control, handleSubmit, formState } = useForm({
+
+  const {
+    control,
+    handleSubmit,
+    formState: { isValid, errors },
+  } = useForm({
     resolver: zodResolver(personalInfoSchema),
+    mode: "onChange", // Validate on every change
     defaultValues: formData.personal || {},
   });
 
@@ -25,7 +31,8 @@ export default function PersonalInfoForm() {
         control={control}
         name="fullName"
         label="Full Name"
-        placeholder="John Doe"
+        placeholder="Your Name"
+        error={errors.fullName}
       />
       <FormInput
         control={control}
@@ -33,14 +40,16 @@ export default function PersonalInfoForm() {
         label="Email"
         placeholder="john@example.com"
         type="email"
+        error={errors.email}
       />
       <FormInput
         control={control}
         name="phone"
         label="Phone Number"
         placeholder="123-456-7890"
+        error={errors.phone}
       />
-      <FormNavigation isValid={formState.isValid} />
+      <FormNavigation isValid={isValid} />
     </form>
   );
 }

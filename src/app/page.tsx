@@ -1,9 +1,10 @@
-import Image from "next/image";
+import FormContainer from "@/components/multi-step-form/FormContainer";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-24">
-      <h2 className="font-bold text-amber-300">Home page</h2>
-    </div>
+    <main className="container mx-auto p-4 md:p-8">
+      <h1 className="text-2xl font-bold mb-8 text-center">Multi-Step Form</h1>
+      <FormContainer />
+    </main>
   );
 }

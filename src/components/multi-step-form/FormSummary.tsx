@@ -6,10 +6,23 @@ import SuccessMessage from "./SuccessMessage";
 import { FormData } from "@/types/formTypes";
 
 async function submitForm(data: FormData) {
-  // Simulate API call
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  console.log("Submitted data:", data);
-  return { success: true };
+  //API call
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL || ""}/api/submit`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }
+  );
+  // console.log(data);
+  if (!response.ok) {
+    throw new Error("Submission failed");
+  }
+
+  return response.json();
 }
 
 export default function FormSummary() {
